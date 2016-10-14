@@ -17,4 +17,4 @@ install:
 	cat zshrc.local >> ~/.zshrc
 ssh-keygen:
 	[ -d ~/.ssh ] || mkdir ~/.ssh
-	[ -f ~/.ssh/id.pub ] && cat ~/.ssh/id.pub || (ssh-keygen -t rsa -b 4096 -N "" -f ~/.ssh/id && cat ~/.ssh/id.pub)
+	[ -f ~/.ssh/id_rsa.pub ] && cat ~/.ssh/id_rsa.pub || (ssh-keygen -t rsa -b 4096 -N "" -f ~/.ssh/id_rsa && cat ~/.ssh/id_rsa.pub)
