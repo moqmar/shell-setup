@@ -1,5 +1,9 @@
 help:
-	@echo "Usage: make plugins|clean|install|ssh-keygen"
+	@echo "Usage: make plugins|clean|install|ssh-keygen|all"
+all:
+	make plugins
+	make install
+	make ssh-keygen
 plugins: clean
 	git clone https://github.com/itchyny/lightline.vim.git lightline
 	mv lightline/autoload lightline/plugin vim
