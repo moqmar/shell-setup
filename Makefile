@@ -1,5 +1,5 @@
 help:
-	@echo "Usage: make plugins|clean|install"
+	@echo "Usage: make plugins|clean|install|ssh-keygen"
 plugins: clean
 	git clone https://github.com/itchyny/lightline.vim.git lightline
 	mv lightline/autoload lightline/plugin vim
@@ -15,3 +15,6 @@ install:
 	cat zshrc | sed 's@!!ICON!!@'"`cat icon`"'  @g' > ~/.zshrc
 	echo >> ~/.zshrc
 	cat zshrc.local >> ~/.zshrc
+ssh-keygen:
+	[ -d ~/.ssh ] || mkdir ~/.ssh
+	[ -f ~/.ssh/id.pub ] && cat ~/.ssh/id.pub || (ssh-keygen -t rsa -b 4096 -N "" -f ~/.ssh/id && cat ~/.ssh/id.pub)
