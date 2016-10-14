@@ -1,6 +1,1 @@
-export TERM=xterm-256color
-eval "$(thefuck --alias)"
-eval "$(gnome-keyring-daemon)"
-
-alias qbin="nc qbin.io 9999"
-alias media="curl -d@- https://m.mo-mar.de/65fb2f57fef515863c8cdbf6eb5a34acd76b6c2d7d711c6a24f6136ffa7c6410"
+# Add further instructions here...
