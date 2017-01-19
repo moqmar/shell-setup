@@ -16,7 +16,7 @@ install:
 	cp -R vim ~/.vim
 	rm -f ~/.vim/vimrc
 	[ ! -d ~/.antigen ] && git clone https://github.com/zsh-users/antigen.git ~/.antigen || echo Antigen is already installed
-	cat zshrc | sed 's@!!ICON!!@'"`cat icon`"'  @g' > ~/.zshrc
+	cp zshrc ~/.zshrc
 	echo >> ~/.zshrc
 	cat zshrc.local >> ~/.zshrc
 ssh-keygen:
