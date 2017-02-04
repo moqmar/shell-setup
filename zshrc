@@ -35,7 +35,7 @@ function zsh-is-root() { [ "$(id -u)" = "0" ] && echo -n "$1" || echo -n "$2"; r
 function zsh-fontawesome() { [ "$FONTAWESOME" = "" ] && echo -n "$1" || echo -n "$2" }
 function zsh-icon() {
     icon="? "
-    [ -d /sys/module/battery ] && icon="%{$fg_bold[green]%}$(zsh-fontawesome " " "[L]") " || icon="%{$fg_bold[blue]%}$(zsh-fontawesome " " "[D]") "
+    [ -e /sys/class/power_supply/BAT0 ] && icon="%{$fg_bold[green]%}$(zsh-fontawesome " " "[L]") " || icon="%{$fg_bold[blue]%}$(zsh-fontawesome " " "[D]") "
     [ -d /etc/X11 ] || icon="%{$fg_bold[yellow]%}$(zsh-fontawesome " " "[S]") "
     [ -d /data/app ] && icon=""
     echo -n $icon
