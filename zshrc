@@ -37,6 +37,7 @@ function zsh-icon() {
     icon="? "
     [ -e /sys/class/power_supply/BAT0 ] && icon="%{$fg_bold[green]%}$(zsh-fontawesome " " "[L]") " || icon="%{$fg_bold[blue]%}$(zsh-fontawesome " " "[D]") "
     [ -d /etc/X11 ] || icon="%{$fg_bold[yellow]%}$(zsh-fontawesome " " "[S]") "
+    [ -f /usr/bin/raspi-config ] && icon="%{$fg_bold[red]%}π "
     [ -d /data/app ] && icon=""
     echo -n $icon
 }
