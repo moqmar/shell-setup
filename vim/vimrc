@@ -19,12 +19,19 @@ set tabstop=4 expandtab shiftwidth=4 smarttab  " soft tabs
 set autoindent          " keep indent
 filetype indent on      " activates indenting for files
 
-colorscheme brighton     " colorscheme
+colorscheme brighton    " colorscheme
 
 set laststatus=2
-" set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
-" set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k]\ [%l,%v][%p%%]
-" set statusline=%F%m%r%h%w\ {%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}\ [%l,%v][%p%%]
-" set statusline=%<%F%m%r%h%w\ {%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}\ %=%-14([%l,%v][%p%%]\ %)
-" set statusline=%f%m%r%h%w\ %({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}%)\ %=%([%l,%v][%p%%]\ %)
 set statusline=\ %f%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}%)\ %([%l,%v][%p%%]\ %)
+
+" write as root with :w!!
+cmap w!! w !sudo tee >/dev/null %
+
+" remember cursor position in files
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" use tabs for makefiles
+autocmd FileType make setlocal noexpandtab
+

@@ -20,9 +20,12 @@ clean:
 	rm -rf lightline
 plugins: clean
 	@echo "\n\n\033[103;30mGetting zsh and vim plugins...\033[0m"
+	# Lightline
 	git clone https://github.com/itchyny/lightline.vim.git lightline
 	mv lightline/autoload lightline/plugin vim
 	rm -rf lightline
+	# Lastplace
+	curl -qo vim/plugin/vim-lastplace.vim https://raw.githubusercontent.com/dietsche/vim-lastplace/master/plugin/vim-lastplace.vim
 fontawesome:
 	@echo "\n\n\033[103;30mInstalling FontAwesome...\033[0m"
 	[ -d ~/.local/share/fonts ] || mkdir -p ~/.local/share/fonts
