@@ -19,7 +19,7 @@ set tabstop=4 expandtab shiftwidth=4 smarttab  " soft tabs
 set autoindent          " keep indent
 filetype indent on      " activates indenting for files
 
-colorscheme brighton     " colorscheme
+colorscheme brighton    " colorscheme
 
 set laststatus=2
 " set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
