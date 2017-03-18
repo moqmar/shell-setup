@@ -1,5 +1,10 @@
 help:
 	@echo "Usage: make clean|plugins|fontawesome|ssh-keygen|chsh|install|all"
+cli:
+    make plugins
+    make install
+    make ssh-keygen
+    make chsh
 all:
 	make plugins
 	make install
