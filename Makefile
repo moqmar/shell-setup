@@ -1,5 +1,12 @@
 help:
 	@echo "Usage: make clean|plugins|fontawesome|ssh-keygen|chsh|install|all"
+cli:
+	make plugins
+	sed -i 's@brighton@brighton-lite@g' vim/vimrc
+	make install
+	sed -i 's@brighton-lite@brighton@g' vim/vimrc
+	make ssh-keygen
+	make chsh
 all:
 	make plugins
 	make install
