@@ -1,10 +1,10 @@
 help:
 	@echo "Usage: make install[-zsh|-vim|-micro|-tmux]|clean|get-fontawesome|ssh-keygen|chsh"
 install:
-	which zsh && make install-zsh
-	which tmux && make install-tmux
-	which micro && make install-micro
-	which vim && make install-vim
+	! which zsh || make install-zsh
+	! which tmux || make install-tmux
+	! which micro || make install-micro
+	! which vim || make install-vim
 	[ -z "$$XDG_SESSION_TYPE" ] || make get-fontawesome
 	make ssh-keygen
 	make chsh

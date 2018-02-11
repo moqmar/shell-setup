@@ -51,7 +51,7 @@ _commandtime_preexec() {
     commandtime_state="command"
 }
 _commandtime_precmd() {
-    if [ "$timerstate" = "command" ]; then
+    if [ "$commandtime_state" = "command" ]; then
         commandtime_state="display"
     else
         commandtime_state="prompt"
