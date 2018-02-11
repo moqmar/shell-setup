@@ -19,7 +19,7 @@ set tabstop=4 expandtab shiftwidth=4 smarttab  " soft tabs
 set autoindent          " keep indent
 filetype indent on      " activates indenting for files
 
-colorscheme brighton    " colorscheme
+colorscheme brighton-lite " colorscheme
 
 set laststatus=2
 set statusline=\ %f%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}%)\ %([%l,%v][%p%%]\ %)

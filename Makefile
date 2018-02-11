@@ -1,40 +1,41 @@
 help:
-	@echo "Usage: make clean|plugins|fontawesome|ssh-keygen|chsh|install|all"
-cli:
-	make plugins
-	sed -i 's@brighton@brighton-lite@g' vim/vimrc
-	make install
-	sed -i 's@brighton-lite@brighton@g' vim/vimrc
-	make ssh-keygen
-	make chsh
-all:
-	make plugins
-	make install
-	make fontawesome
-	make ssh-keygen
-	make chsh
+	@echo "Usage: make install[-zsh|-vim|-micro|-tmux]|clean|get-fontawesome|ssh-keygen|chsh"
 install:
-	@echo "\n\n\033[103;30mInstalling files...\033[0m"
-	cp vim/vimrc ~/.vimrc
-	cp -R vim ~/.vim
-	rm -f ~/.vim/vimrc
+	which zsh && make install-zsh
+	which tmux && make install-tmux
+	which micro && make install-micro
+	which vim && make install-vim
+	[ -d /etc/X11 ] && make get-fontawesome
+	make ssh-keygen
+	make chsh
+clean:
+	find vim -mindepth 1 -not -path 'vim/colors/*' -not -path vim/colors -not -path vim/vimrc -exec rm -rf {} \+
+	rm -rf lightline
+install-zsh:
+	@echo "\n\n\033[103;30mInstalling zsh...\033[0m"
 	[ ! -d ~/.antigen ] && git clone https://github.com/zsh-users/antigen.git ~/.antigen || echo Antigen is already installed
 	cp zshrc ~/.zshrc
 	echo >> ~/.zshrc
 	cat zshrc.local >> ~/.zshrc
-clean:
-	find vim -mindepth 1 -not -path 'vim/colors/*' -not -path vim/colors -not -path vim/vimrc -exec rm -rf {} \+
-	rm -rf lightline
-plugins: clean
-	@echo "\n\n\033[103;30mGetting zsh and vim plugins...\033[0m"
+install-micro:
+	@echo "\n\n\033[103;30mConfiguring micro...\033[0m"
+	cp -R micro ~/.config/micro
+install-tmux:
+	@echo "\n\n\033[103;30mConfiguring tmux...\033[0m"
+	cp tmux.conf ~/.tmux.conf
+install-vim: clean
+	@echo "\n\n\033[103;30mConfiguring vim...\033[0m"
+	cp vim/vimrc ~/.vimrc
+	cp -R vim ~/.vim
+	rm -f ~/.vim/vimrc
 	# Lightline
 	git clone https://github.com/itchyny/lightline.vim.git lightline
 	mv lightline/autoload lightline/plugin vim
 	rm -rf lightline
 	# Lastplace
 	curl -qo vim/plugin/vim-lastplace.vim https://raw.githubusercontent.com/dietsche/vim-lastplace/master/plugin/vim-lastplace.vim
-fontawesome:
-	@echo "\n\n\033[103;30mInstalling FontAwesome...\033[0m"
+get-fontawesome:
+	@echo "\n\n\033[103;30mDownloading FontAwesome...\033[0m"
 	[ -d ~/.local/share/fonts ] || mkdir -p ~/.local/share/fonts
 	[ -f ~/.local/share/fonts/fontawesome-webfont.ttf ] || ( wget https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf -O ~/.local/share/fonts/fontawesome-webfont.ttf && fc-cache -fv )
 ssh-keygen:

@@ -1,3 +1,19 @@
 # Add further instructions here...
 #export FONTAWESOME=UNSUPPORTED # Uncomment if you want to disable FontAwesome icons
 
+export EDITOR=micro
+
+export PATH="$PATH:/home/momar/Anwendungen/bin"
+alias apt="sudo apt"
+
+export GOPATH="/home/momar/.go"
+export PATH="$PATH:/home/momar/.go/bin"
+
+alias ls="exa"
+alias la="exa -a"
+alias ll="exa --git -la"
+alias l="ll"
+
+alias h='$(history | sed -E '"'"'s|^\s*[0-9]+\s*||g'"'"' | tac | fzf)'
+
+antigen bundle tarruda/zsh-autosuggestions
