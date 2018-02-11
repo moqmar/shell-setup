@@ -34,17 +34,29 @@ function zsh-icon() {
     echo -n $icon
 }
 function zsh-commandtime() {
-    t=$(($timer+$SECONDS))
+    [ "$commandtime_state" = "display" ] || return
+    t=$(($commandtime_timer+$SECONDS))
     if [ $t -gt 2 ] && [ $t -lt 60 ]; then
         echo -n " %{$fg_bold[yellow]%}🕓%{$fg_no_bold[yellow]%}$t"s
     elif [ $t -gt 2 ]; then
-        echo -n " %{$fg_bold[yellow]%}🕓%{$fg_no_bold[yellow]%}$(($t/60)):$(($t%60))"
+        tz=
+        [ $t -lt 10 ] && tz=0
+        echo -n " %{$fg_bold[yellow]%}🕓%{$fg_no_bold[yellow]%}$(($t/60)):$tz$(($t%60))"
     fi
 }
-_command_time_preexec() {
-  timer=$((-$SECONDS))
+_commandtime_preexec() {
+    commandtime_timer=$((-$SECONDS))
+    commandtime_state="command"
 }
-preexec_functions+=(_command_time_preexec)
+_commandtime_precmd() {
+    if [ "$timerstate" = "command" ]; then
+        commandtime_state="display"
+    else
+        commandtime_state="prompt"
+    fi
+}
+preexec_functions+=(_commandtime_preexec)
+precmd_functions+=(_commandtime_precmd)
 
 PROMPT='$(zsh-icon)$([ -d /data/app ] || zsh-is-root "%{$fg_bold[red]%}%n%{\e[1;90m%}@%M %{\e[0m%}" "%{\e[1;90m%}%n@%M %{\e[0m%}")%{$fg_bold[yellow]%}%(4~|…/%2~|%~) %{$fg_bold[$([ "$(id -u)" = "0" ] && echo red || echo blue)]%}$(zsh-is-root "#" \$) %{$reset_color%}'
 RPROMPT='$(ZSH_LAST_STATUS=$?;[ $ZSH_LAST_STATUS -eq 0 ] || echo "%{$fg_no_bold[red]%}$(zsh-fontawesome " ")$ZSH_LAST_STATUS")$(zsh-commandtime)$(zsh-git-status)%{$reset_color%}'
