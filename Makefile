@@ -5,7 +5,7 @@ install:
 	which tmux && make install-tmux
 	which micro && make install-micro
 	which vim && make install-vim
-	[ -d /etc/X11 ] && make get-fontawesome
+	[ -n "$$XDG_SESSION_TYPE" ] && make get-fontawesome
 	make ssh-keygen
 	make chsh
 clean:
