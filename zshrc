@@ -65,7 +65,7 @@ RPROMPT='$(ZSH_LAST_STATUS=$?;[ $ZSH_LAST_STATUS -eq 0 ] || echo "%{$fg_no_bold[
 
 export EDITOR=$(which micro >/dev/null && echo micro || { which vim >/dev/null && echo vim || echo nano })
 
-whois exa >/dev/null && {
+which exa >/dev/null && {
     alias ls="exa"
     alias la="exa -a"
     alias ll="exa --git -la"
