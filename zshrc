@@ -42,7 +42,7 @@ function zsh-commandtime() {
         echo -n " %{$fg_bold[yellow]%}🕓%{$fg_no_bold[yellow]%}$t"s
     elif [ $t -gt 2 ]; then
         tz=
-        [ $t -lt 10 ] && tz=0
+        [ $(($t%60)) -lt 10 ] && tz=0
         echo -n " %{$fg_bold[yellow]%}🕓%{$fg_no_bold[yellow]%}$(($t/60)):$tz$(($t%60))"
     fi
 }
