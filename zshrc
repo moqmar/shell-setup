@@ -14,6 +14,8 @@ sudo  # Double-Escape to toggle sudo
 git   # Git aliases
 npm   # npm aliases and completion
 
+tarruda/zsh-autosuggestions
+
 EOBUNDLES
 antigen theme robbyrussell
 antigen apply
