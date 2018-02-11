@@ -5,7 +5,7 @@ install:
 	which tmux && make install-tmux
 	which micro && make install-micro
 	which vim && make install-vim
-	[ -n "$$XDG_SESSION_TYPE" ] && make get-fontawesome
+	[ -z "$$XDG_SESSION_TYPE" ] || make get-fontawesome
 	make ssh-keygen
 	make chsh
 clean:
