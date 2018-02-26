@@ -32,7 +32,7 @@ $ cd .shell-setup
 $ make install
 ```
 
-See the [advanced documentation page](/shell-setup.html) for more information about applying and modifiying the configuration.
+See the [advanced documentation page](shell-setup.md) for more information about applying and modifiying the configuration.
 
 ## The `bootstrap` script
 
@@ -50,7 +50,7 @@ The script can currently set up the following (it will ask for every step before
 - **basic iptables ruleset**: Allow SSH, Mosh and networking-relevant protocols (ping, traceroute, dhcp)
 - **caddy**: Easy-to-use webserver, can be optionally installed together with PHP.
 
-There's a [detailed bootstrap.sh documentation page](/bootstrap.html) available containing more information about what changes every one of the steps makes to a system.
+There's a [detailed bootstrap.sh documentation page](bootstrap.md) available containing more information about what changes every one of the steps makes to a system.
 
 ### Using the bootstrap script
 
