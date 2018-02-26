@@ -1,4 +1,5 @@
 ---
+description: Overview of shell-setup and bootstrap.sh
 next: /shell-setup.html
 nextTitle: The shell-setup repository
 ---

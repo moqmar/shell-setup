@@ -1,4 +1,5 @@
 ---
+description: Detaillierte Erklärung der von shell-setup vorgenommenen Konfigurationsänderungen
 prev: /de/
 prevTitle: Was ist shell-setup?
 next: /de/bootstrap.html

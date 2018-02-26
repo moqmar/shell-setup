@@ -1,4 +1,5 @@
 ---
+description: Erklärung der einzelnen von bootstrap.sh vorgenommenen Änderungen
 prev: /de/shell-setup.html
 prevTitle: Das shell-setup Repository
 ---
