@@ -1,6 +1,8 @@
 template:
     url: https://github.com/moqmar/mintlook-couscous
 
+baseUrl: https://moqmar.github.io/shell-setup
+
 title: shell-setup # Page Title
 logo: https://png.icons8.com/nolan/96/000000/console.png # Icon URL
 color: "#256bff"   # Accent color
