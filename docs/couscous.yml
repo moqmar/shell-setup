@@ -1,0 +1,45 @@
+template:
+    url: https://github.com/moqmar/mintlook-couscous
+
+title: shell-setup # Page Title
+logo: https://png.icons8.com/nolan/96/000000/console.png # Icon URL
+color: "#256bff"   # Accent color
+
+languages: ["en", "de"] # List of supported languages. Comment out to disable language selection.
+defaultLanguage: en  # Default language icon, and the value of the html lang attribute. It is recommended to set this even (especially) if you're not using language selection.
+
+search: true # Enable search
+scripts:
+    after:
+        - php .couscous/generated/.scripts/generate-search-index.php # Required for search
+        - rm -rf .couscous/generated/.scripts # Clean up unneccessary files
+
+sidebar:
+  default:
+    - subtitle: shell-setup
+    - text: GitHub Repository
+      link: https://github.com/moqmar/shell-setup
+    - subtitle: bootstrap.sh
+    - text: Gist (Source Files)
+      link: https://gist.github.com/moqmar/7b468d995619131e983d59bde253d9a0
+    - subtitle: About the developer
+    - text: mo-mar.de
+      link: https://mo-mar.de
+    - text: "Twitter: @moqmar"
+      link: https://twitter.com/moqmar
+  de:
+    - subtitle: shell-setup
+    - text: GitHub-Repository
+      link: https://github.com/moqmar/shell-setup
+    - subtitle: bootstrap.sh
+    - text: Gist (Quelldateien)
+      link: https://gist.github.com/moqmar/7b468d995619131e983d59bde253d9a0
+    - subtitle: Über den Entwickler
+    - text: mo-mar.de
+      link: https://mo-mar.de
+    - text: "Twitter: @moqmar"
+      link: https://twitter.com/moqmar
+
+footer: |
+    <a href="https://icons8.com">Icons by Icons8</a>
+
