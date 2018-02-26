@@ -5,7 +5,7 @@ baseUrl: https://moqmar.github.io/shell-setup
 
 title: shell-setup # Page Title
 logo: https://png.icons8.com/nolan/96/000000/console.png # Icon URL
-color: "#256bff"   # Accent color
+color: "#415dff"   # Accent color
 
 languages: ["en", "de"] # List of supported languages. Comment out to disable language selection.
 defaultLanguage: en  # Default language icon, and the value of the html lang attribute. It is recommended to set this even (especially) if you're not using language selection.
@@ -43,5 +43,6 @@ sidebar:
       link: https://twitter.com/moqmar
 
 footer: |
-    <a href="https://icons8.com">Icons by Icons8</a>
+    &copy; <a href="https://mo-mar.de">Moritz Marquardt</a> 2018, licensed under <a href="https://opensource.org/licenses/MIT">the MIT License</a>
+    &nbsp;&bull;&nbsp; <a href="https://icons8.com">Icons by Icons8</a>
 
