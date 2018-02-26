@@ -1,0 +1,105 @@
+<!doctype html>
+<html class="lazyload" lang="de">
+    <head>
+        <title>bootstrap · shell-setup</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Share:400|Jaldi:400,700|Fira+Mono:400,700">
+        <link rel="stylesheet" href="/_assets/base.css">
+        <link rel="stylesheet" href="/_assets/lindoc.css">
+        <style>
+            a,.results strong{color:#256bff}
+            button,input[type=submit],input[type=button],input[type=reset],.button,.search input[type=submit]{background-color:#256bff}
+            .search input[type=text]:focus,.results,.results strong{border-color:#256bff !important}
+            @media screen and (min-width:1450px){.livetoc a.active{ color:#256bff}}
+        </style>
+        <script>
+            // Parent Elements - e.P("body") - https://gist.github.com/moqmar/0995cf6595201f7a062fb173cb4ab938
+            (function(E){E.matches||(E.matches=E.matchesSelector||E.msMatchesSelector||E.webkitMatchesSelector)})(Element.prototype)
+            Element.prototype.P=function(s){var e=this
+            if(!s||typeof s=="number")for(var i=0;i<(s||1);i++)e=e?e.parentElement:e
+            else if(typeof s=="string")while(e&&!e.matches(s))e=e.parentElement
+            else while(e&&e!=s)e=e.parentElement
+            return e}
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>
+                <img src="https://png.icons8.com/nolan/96/000000/console.png" alt="shell-setup">
+            </h1>
+            <!-- THIS DOCUMENT IS INDEXED -->
+            <div class="search" role="search"><form data-baseurl="" onsubmit="search(this); return false;">
+                <input type="text" class="search-query" oninput="search(this.parentElement)" placeholder="Search...">
+                <input type="submit" value="➜">
+            </form><div class="results"></div></div>
+            <div class="language">
+                <input type="checkbox" id="language-select">
+                <label for="language-select"><img src="/_assets/flags/de.png"></label>
+                <div class="language-select-popup">
+                    <a href="/bootstrap.html"><img src="/_assets/flags/en.png"></a>
+                    <a href="/de/bootstrap.html"><img src="/_assets/flags/de.png"></a>
+                </div>
+                <script>
+                    document.getElementById("language-select").checked = false;
+                    window.addEventListener("click", function(event) {
+                        if (!event.target.P(".language")) document.getElementById("language-select").checked = false;
+                    })
+                </script>
+            </div>
+            <nav class="breadcrumbs">
+                <a href="/de/">shell-setup</a> » <strong>bootstrap</strong>
+            </nav>
+        </header>
+
+        <main>
+            <aside class="toc"><ul></ul></aside>
+            <article>
+                <template search-description></template>
+
+                <nav class="pagination">
+                    <div>« <a href="/de/shell-setup.html">Das shell-setup Repository</a></div>
+                    <div></div>
+                </nav>
+
+<!-- CONTENT START -->
+<h1 id="das-bootstrap-skript">Das Bootstrap-Skript</h1>
+<p>Momentan ist zu diesem Thema noch keine Dokumentation vorhanden.</p>
+<!-- CONTENT END -->
+                <nav class="pagination">
+                    <div>« <a href="/de/shell-setup.html">Das shell-setup Repository</a></div>
+                    <div></div>
+                </nav>
+            </article>
+            <aside class="sidebar">
+                <hr>
+                <h3>shell-setup</h3>
+                <a href="https://github.com/moqmar/shell-setup" class="bulletlink">GitHub-Repository</a>
+                <h3>bootstrap.sh</h3>
+                <a href="https://gist.github.com/moqmar/7b468d995619131e983d59bde253d9a0" class="bulletlink">Gist (Quelldateien)</a>
+                <h3>Über den Entwickler</h3>
+                <a href="https://mo-mar.de" class="bulletlink">mo-mar.de</a>
+                <a href="https://twitter.com/moqmar" class="bulletlink">Twitter: @moqmar</a>
+            </aside>
+            <footer>
+                <hr>
+
+<!-- FOOTER BEGIN -->
+<a href="https://icons8.com">Icons by Icons8</a>
+
+<!-- FOOTER END -->
+
+            </footer>
+        </main>
+
+        <script src="/_assets/toc.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/autoloader/prism-autoloader.min.js"></script>
+        <script>Prism.plugins.autoloader.languages_path = "https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/";</script>
+        <link rel="stylesheet" href="/_assets/prism.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/js-search@1.4.2/dist/umd/js-search.min.js"></script>
+        <script src="/_assets/search.js"></script>
+    </body>
+</html>

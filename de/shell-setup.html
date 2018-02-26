@@ -1,0 +1,199 @@
+<!doctype html>
+<html class="lazyload" lang="de">
+    <head>
+        <title>shell-setup · shell-setup</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Share:400|Jaldi:400,700|Fira+Mono:400,700">
+        <link rel="stylesheet" href="/_assets/base.css">
+        <link rel="stylesheet" href="/_assets/lindoc.css">
+        <style>
+            a,.results strong{color:#256bff}
+            button,input[type=submit],input[type=button],input[type=reset],.button,.search input[type=submit]{background-color:#256bff}
+            .search input[type=text]:focus,.results,.results strong{border-color:#256bff !important}
+            @media screen and (min-width:1450px){.livetoc a.active{ color:#256bff}}
+        </style>
+        <script>
+            // Parent Elements - e.P("body") - https://gist.github.com/moqmar/0995cf6595201f7a062fb173cb4ab938
+            (function(E){E.matches||(E.matches=E.matchesSelector||E.msMatchesSelector||E.webkitMatchesSelector)})(Element.prototype)
+            Element.prototype.P=function(s){var e=this
+            if(!s||typeof s=="number")for(var i=0;i<(s||1);i++)e=e?e.parentElement:e
+            else if(typeof s=="string")while(e&&!e.matches(s))e=e.parentElement
+            else while(e&&e!=s)e=e.parentElement
+            return e}
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>
+                <img src="https://png.icons8.com/nolan/96/000000/console.png" alt="shell-setup">
+            </h1>
+            <!-- THIS DOCUMENT IS INDEXED -->
+            <div class="search" role="search"><form data-baseurl="" onsubmit="search(this); return false;">
+                <input type="text" class="search-query" oninput="search(this.parentElement)" placeholder="Search...">
+                <input type="submit" value="➜">
+            </form><div class="results"></div></div>
+            <div class="language">
+                <input type="checkbox" id="language-select">
+                <label for="language-select"><img src="/_assets/flags/de.png"></label>
+                <div class="language-select-popup">
+                    <a href="/shell-setup.html"><img src="/_assets/flags/en.png"></a>
+                    <a href="/de/shell-setup.html"><img src="/_assets/flags/de.png"></a>
+                </div>
+                <script>
+                    document.getElementById("language-select").checked = false;
+                    window.addEventListener("click", function(event) {
+                        if (!event.target.P(".language")) document.getElementById("language-select").checked = false;
+                    })
+                </script>
+            </div>
+            <nav class="breadcrumbs">
+                <a href="/de/">shell-setup</a> » <strong>shell-setup</strong>
+            </nav>
+        </header>
+
+        <main>
+            <aside class="toc"><ul></ul></aside>
+            <article>
+                <template search-description></template>
+
+                <nav class="pagination">
+                    <div>« <a href="/de/">Was ist shell-setup?</a></div>
+                    <div><a href="/de/bootstrap.html">Das Bootstrap-Skript</a> »</div>
+                </nav>
+
+<!-- CONTENT START -->
+<h1 id="das-shell-setup-repository">Das shell-setup Repository</h1>
+<pre><code class="language-bash">$ make
+Usage: make install[-zsh|-vim|-micro|-tmux]|clean|get-fontawesome|ssh-keygen|chsh </code></pre>
+<h1 id="zsh-konfiguration">zsh-Konfiguration</h1>
+<ul>
+<li>Antigen mit folgenden Plugins:
+<ul>
+<li>extract</li>
+<li>command-not-found</li>
+<li>colored-man-pages</li>
+<li><strong>sudo</strong>: 2x <code>Esc</code> schaltet <code>sudo</code> für den aktuellen Befehl an bzw. aus.</li>
+<li>git</li>
+<li>npm</li>
+<li>tarruda/zsh-autosuggestions</li>
+</ul></li>
+<li>Prompt mit folgenden Funktionen:
+<ul>
+<li>Git-Integration</li>
+<li>Anzeige des Exit-Codes</li>
+<li>Anzeige der Zeit die ein Befehl benötigt hat</li>
+<li>Font Awesome-Icons mit Erkenung des Systemtyps</li>
+</ul></li>
+<li>Haufenweise Aliase für <code>ls</code> (<code>ll</code> = Tabelle, <code>la</code> = versteckte Dateien)</li>
+<li>Wenn <code>exa</code> installiert ist wird es statt <code>ls</code> verwendet</li>
+<li><code>become &lt;user&gt;</code> ist Alias für <code>sudo -iu &lt;user&gt;</code> (Login-Shell)</li>
+<li><code>transfer &lt;filename&gt;</code> für Upload zu <a href="https://transfer.sh">https://transfer.sh</a></li>
+<li><code>qbin &lt;filename&gt;</code> für Upload zu <a href="https://qbin.io">https://qbin.io</a> (<code>&lt;command&gt; | qbin -</code> für Upload von STDIN)</li>
+</ul>
+<h1 id="micro-konfiguration">micro-Konfiguration</h1>
+<ul>
+<li>default-light Farbschema; ohne Hintergrund und Zeilenhervorhebung für beste Geschwindigkeit per SSH.</li>
+<li>comment-Plugin: mit Alt+# können Zeilen ein-/auskommentiert werden.</li>
+<li><code>.editorconfig</code>-Unterstützung</li>
+<li>filemanager-Plugin (<code>F6</code>)</li>
+<li>Zeilen/Zeichen zählen (<code>F5</code>)</li>
+</ul>
+<h1 id="vim-konfiguration">vim-Konfiguration</h1>
+<ul>
+<li>Lightline zeigt alle wichtigen Informationen in der Fußzeile an.</li>
+<li>Lastplace merkt sich die Eingabeposition.</li>
+<li>Farbschema: Brighton Lite; ohne Hintergrund und Zeilenhervorhebung für beste Geschwindigkeit per SSH.</li>
+<li>Datei mit root-Rechten speichen (per sudo) mit <code>:w!!</code>.</li>
+</ul>
+<h1 id="tmux-konfiguration">tmux-Konfiguration</h1>
+<ul>
+<li>Maussteuerung ist aktiviert.</li>
+<li>Unauffälliges Design.</li>
+</ul>
+<h2 id="tastenkombinationen">Tastenkombinationen</h2>
+<p>Kommandosequenz: <code>Strg + Leertaste</code></p>
+<table>
+<thead>
+<tr>
+<th>Kürzel</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>←↓↑→</code></td>
+<td>Panel auswählen</td>
+</tr>
+<tr>
+<td><code>Strg+←↓↑→</code></td>
+<td>Panel vergrößern/verkleinern</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Horizontal teilen</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>Vertikal teilen (in deutschem Tastaturlayout selbe Taste wie <code>|</code>)</td>
+</tr>
+<tr>
+<td><code>t</code></td>
+<td>Neuer Tab</td>
+</tr>
+<tr>
+<td><code>,</code></td>
+<td>Zu vorigem Tab wechseln</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>Zu nächstem Tab wechseln</td>
+</tr>
+<tr>
+<td><code>1</code>-<code>9</code></td>
+<td>Zu bestimmtem Tab wechseln</td>
+</tr>
+<tr>
+<td><code>r</code></td>
+<td>Konfiguration neu laden</td>
+</tr>
+</tbody>
+</table>
+<!-- CONTENT END -->
+                <nav class="pagination">
+                    <div>« <a href="/de/">Was ist shell-setup?</a></div>
+                    <div><a href="/de/bootstrap.html">Das Bootstrap-Skript</a> »</div>
+                </nav>
+            </article>
+            <aside class="sidebar">
+                <hr>
+                <h3>shell-setup</h3>
+                <a href="https://github.com/moqmar/shell-setup" class="bulletlink">GitHub-Repository</a>
+                <h3>bootstrap.sh</h3>
+                <a href="https://gist.github.com/moqmar/7b468d995619131e983d59bde253d9a0" class="bulletlink">Gist (Quelldateien)</a>
+                <h3>Über den Entwickler</h3>
+                <a href="https://mo-mar.de" class="bulletlink">mo-mar.de</a>
+                <a href="https://twitter.com/moqmar" class="bulletlink">Twitter: @moqmar</a>
+            </aside>
+            <footer>
+                <hr>
+
+<!-- FOOTER BEGIN -->
+<a href="https://icons8.com">Icons by Icons8</a>
+
+<!-- FOOTER END -->
+
+            </footer>
+        </main>
+
+        <script src="/_assets/toc.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/autoloader/prism-autoloader.min.js"></script>
+        <script>Prism.plugins.autoloader.languages_path = "https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/";</script>
+        <link rel="stylesheet" href="/_assets/prism.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/js-search@1.4.2/dist/umd/js-search.min.js"></script>
+        <script src="/_assets/search.js"></script>
+    </body>
+</html>

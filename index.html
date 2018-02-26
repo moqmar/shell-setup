@@ -1,0 +1,143 @@
+<!doctype html>
+<html class="lazyload" lang="en">
+    <head>
+        <title>index · shell-setup</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Share:400|Jaldi:400,700|Fira+Mono:400,700">
+        <link rel="stylesheet" href="/_assets/base.css">
+        <link rel="stylesheet" href="/_assets/lindoc.css">
+        <style>
+            a,.results strong{color:#256bff}
+            button,input[type=submit],input[type=button],input[type=reset],.button,.search input[type=submit]{background-color:#256bff}
+            .search input[type=text]:focus,.results,.results strong{border-color:#256bff !important}
+            @media screen and (min-width:1450px){.livetoc a.active{ color:#256bff}}
+        </style>
+        <script>
+            // Parent Elements - e.P("body") - https://gist.github.com/moqmar/0995cf6595201f7a062fb173cb4ab938
+            (function(E){E.matches||(E.matches=E.matchesSelector||E.msMatchesSelector||E.webkitMatchesSelector)})(Element.prototype)
+            Element.prototype.P=function(s){var e=this
+            if(!s||typeof s=="number")for(var i=0;i<(s||1);i++)e=e?e.parentElement:e
+            else if(typeof s=="string")while(e&&!e.matches(s))e=e.parentElement
+            else while(e&&e!=s)e=e.parentElement
+            return e}
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>
+                <img src="https://png.icons8.com/nolan/96/000000/console.png" alt="shell-setup">
+            </h1>
+            <!-- THIS DOCUMENT IS INDEXED -->
+            <div class="search" role="search"><form data-baseurl="" onsubmit="search(this); return false;">
+                <input type="text" class="search-query" oninput="search(this.parentElement)" placeholder="Search...">
+                <input type="submit" value="➜">
+            </form><div class="results"></div></div>
+            <div class="language">
+                <input type="checkbox" id="language-select">
+                <label for="language-select"><img src="/_assets/flags/en.png"></label>
+                <div class="language-select-popup">
+                    <a href="/"><img src="/_assets/flags/en.png"></a>
+                    <a href="/de/"><img src="/_assets/flags/de.png"></a>
+                </div>
+                <script>
+                    document.getElementById("language-select").checked = false;
+                    window.addEventListener("click", function(event) {
+                        if (!event.target.P(".language")) document.getElementById("language-select").checked = false;
+                    })
+                </script>
+            </div>
+            <nav class="breadcrumbs">
+                <a href="/">shell-setup</a>
+            </nav>
+        </header>
+
+        <main>
+            <aside class="toc"><ul></ul></aside>
+            <article>
+                <template search-description></template>
+
+                <nav class="pagination">
+                    <div></div>
+                    <div><a href="/shell-setup.html">The shell-setup repository</a> »</div>
+                </nav>
+
+<!-- CONTENT START -->
+<h1 id="what-is-shell-setup">What is shell-setup?</h1>
+<p>This is basically a repository of all the dotfiles that make up my console configuration.<br />
+There's also the <a href="https://gist.github.com/moqmar/7b468d995619131e983d59bde253d9a0">bootstrap.sh</a> script that sets up a fully functional Debian server as I like it.</p>
+<p>So, this is all highly opinionated. I like simplicity, saving space and ease of use (from a GNOME user's perspective, I know that if your desktop environment is Emacs you'll find something different to be easy to use).</p>
+<p>If you like that too, that's great, but you might want to <a href="https://github.com/moqmar/shell-setup#fork-destination-box">fork the repository</a> and make your own version. The goal is not just to share my configuration, it's more about providing a workflow to quickly appy a configuration to a new system.</p>
+<h2 id="user-configuration">User configuration</h2>
+<p>The configuration currently works for:</p>
+<ul>
+<li><strong>zsh</strong>: An awesome bash replacement with a lot of great plugins available.</li>
+<li><strong>tmux</strong>: A terminal multiplexer.</li>
+<li><strong>vim</strong>: An advanced command line text editor that's available on pretty much every system.</li>
+<li><strong>micro</strong>: A tiny command line text editor with intuitive controls (mouse, Ctrl+S, ...).</li>
+<li><strong>ssh</strong>: Generates an SSH key and sets up folder permissions.</li>
+</ul>
+<p><img src="zsh.jpg" alt="" /></p>
+<p><img src="tmux-vim-micro.jpg" alt="" /></p>
+<h3 id="manually-applying-the-configuration">Manually applying the configuration</h3>
+<pre><code class="language-bash">$ git clone https://github.com/moqmar/shell-setup.git ~/.shell-setup
+$ cd .shell-setup
+$ make install</code></pre>
+<p>See the <a href="/shell-setup.html">advanced documentation page</a> for more information about applying and modifiying the configuration.</p>
+<h2 id="the">The <code>bootstrap</code> script</h2>
+<p>The script can currently set up the following (it will ask for every step before running it):</p>
+<ul>
+<li><strong>locales</strong>: Choose the correct locale settings for the server.</li>
+<li><strong>apt: upgrade</strong>: Update package lists and upgrade all packages to the latest version.</li>
+<li><strong>apt: install basic tools</strong>: vim, git, build-essential, zip/unzip, tar, htop, wget, curl, dnsutils</li>
+<li><strong>apt: install additional tools</strong>: zsh, tmux, mosh, ag, jq</li>
+<li><strong>install binary tools</strong>: micro, exa, fd</li>
+<li><strong>user configuration</strong>: Apply shell-setup for the current user.</li>
+<li><strong>default for new users</strong>: Apply shell-setup for all new users.</li>
+<li><strong>clear motd, colored bash prompt</strong></li>
+<li><strong>sshd config</strong>: Don't allow password authentication and use simple <code>/etc/ssh/sshd_config</code>.</li>
+<li><strong>quad9 nameserver</strong></li>
+<li><strong>basic iptables ruleset</strong>: Allow SSH, Mosh and networking-relevant protocols (ping, traceroute, dhcp)</li>
+<li><strong>caddy</strong>: Easy-to-use webserver, can be optionally installed together with PHP.</li>
+</ul>
+<p>There's a <a href="/bootstrap.html">detailed bootstrap.sh documentation page</a> available containing more information about what changes every one of the steps makes to a system.</p>
+<h3 id="using-the-bootstrap-script">Using the bootstrap script</h3>
+<pre><code class="language-bash">$ bash -c ". &lt;(curl -s https://gist.githubusercontent.com/moqmar/7b468d995619131e983d59bde253d9a0/raw)"</code></pre>
+<!-- CONTENT END -->
+                <nav class="pagination">
+                    <div></div>
+                    <div><a href="/shell-setup.html">The shell-setup repository</a> »</div>
+                </nav>
+            </article>
+            <aside class="sidebar">
+                <hr>
+                <h3>shell-setup</h3>
+                <a href="https://github.com/moqmar/shell-setup" class="bulletlink">GitHub Repository</a>
+                <h3>bootstrap.sh</h3>
+                <a href="https://gist.github.com/moqmar/7b468d995619131e983d59bde253d9a0" class="bulletlink">Gist (Source Files)</a>
+                <h3>About the developer</h3>
+                <a href="https://mo-mar.de" class="bulletlink">mo-mar.de</a>
+                <a href="https://twitter.com/moqmar" class="bulletlink">Twitter: @moqmar</a>
+            </aside>
+            <footer>
+                <hr>
+
+<!-- FOOTER BEGIN -->
+<a href="https://icons8.com">Icons by Icons8</a>
+
+<!-- FOOTER END -->
+
+            </footer>
+        </main>
+
+        <script src="/_assets/toc.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/autoloader/prism-autoloader.min.js"></script>
+        <script>Prism.plugins.autoloader.languages_path = "https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/";</script>
+        <link rel="stylesheet" href="/_assets/prism.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/js-search@1.4.2/dist/umd/js-search.min.js"></script>
+        <script src="/_assets/search.js"></script>
+    </body>
+</html>
