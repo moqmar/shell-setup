@@ -1,3 +1,4 @@
 {
-	"Alt-#": "comment.comment"
+	"Alt-#": "comment.comment",
+	"F6": "filemanager.toggle_tree"
 }
