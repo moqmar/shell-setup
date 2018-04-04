@@ -19,21 +19,25 @@ install-zsh:
 	cat zshrc.local >> ~/.zshrc
 install-micro:
 	@echo "\n\n\033[103;30mConfiguring micro...\033[0m"
+	mkdir -p ~/.config
+	rm -rf ~/.config/micro
 	cp -R micro ~/.config/micro
 install-tmux:
 	@echo "\n\n\033[103;30mConfiguring tmux...\033[0m"
 	cp tmux.conf ~/.tmux.conf
 install-vim: clean
 	@echo "\n\n\033[103;30mConfiguring vim...\033[0m"
-	cp vim/vimrc ~/.vimrc
-	cp -R vim ~/.vim
-	rm -f ~/.vim/vimrc
 	# Lightline
 	git clone https://github.com/itchyny/lightline.vim.git lightline
 	mv lightline/autoload lightline/plugin vim
 	rm -rf lightline
 	# Lastplace
 	curl -qo vim/plugin/vim-lastplace.vim https://raw.githubusercontent.com/dietsche/vim-lastplace/master/plugin/vim-lastplace.vim
+	# Install
+	cp vim/vimrc ~/.vimrc
+	rm -rf ~/.vim
+	cp -R vim ~/.vim
+	rm -f ~/.vim/vimrc
 get-fontawesome:
 	@echo "\n\n\033[103;30mDownloading FontAwesome...\033[0m"
 	[ -d ~/.local/share/fonts ] || mkdir -p ~/.local/share/fonts
