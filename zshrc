@@ -67,6 +67,9 @@ precmd_functions+=(_commandtime_precmd)
 PROMPT='$(zsh-icon)$([ -d /data/app ] || zsh-is-root "%{$fg_bold[red]%}%n%{\e[1;90m%}@%M %{\e[0m%}" "%{\e[1;90m%}%n@%M %{\e[0m%}")%{$fg_bold[yellow]%}%(4~|…/%2~|%~) %{$fg_bold[$([ "$(id -u)" = "0" ] && echo red || echo blue)]%}$(zsh-is-root "#" \$) %{$reset_color%}'
 RPROMPT='$(ZSH_LAST_STATUS=$?;[ $ZSH_LAST_STATUS -eq 0 ] || echo -n "%{$fg_no_bold[red]%}$(zsh-fontawesome " ")$ZSH_LAST_STATUS")$(zsh-commandtime)$(zsh-git-status)%{$reset_color%}'
 
+# Never cache command completions
+zstyle ":completion:*:commands" rehash 1
+
 export EDITOR=$(which micro >/dev/null && echo micro || { which vim >/dev/null && echo vim || echo nano })
 
 which exa >/dev/null && {
