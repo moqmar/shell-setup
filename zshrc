@@ -37,7 +37,7 @@ function zsh-icon() {
 }
 function zsh-commandtime() {
     [ "$commandtime_state" = "display" ] || return
-    t=$(($commandtime_timer+$SECONDS))
+    t=$(($commandtime_timer+$commandtime_done))
     if [ $t -gt 2 ] && [ $t -lt 60 ]; then
         echo -n " %{$fg_bold[yellow]%}🕓%{$fg_no_bold[yellow]%}$t"s
     elif [ $t -gt 2 ]; then
@@ -48,12 +48,16 @@ function zsh-commandtime() {
 }
 _commandtime_preexec() {
     commandtime_timer=$((-$SECONDS))
+    commandtime_done=
     commandtime_state="command"
 }
 _commandtime_precmd() {
     if [ "$commandtime_state" = "command" ]; then
+        # A command finished, print execution time
+        [ -n "$commandtime_done" ] || commandtime_done=$SECONDS
         commandtime_state="display"
     else
+        # There was no command, don't do anything
         commandtime_state="prompt"
     fi
 }
